@@ -4,7 +4,6 @@ import { useState } from "react"
 const NuevoPresupuesto= ({presupuesto, setPresupuesto, setValidPresupuesto}) =>{
     
     const [mensaje, setMensaje]= useState('')
-    
 
     const handlePresupuesto = e =>{
         e.preventDefault()
@@ -30,7 +29,7 @@ const NuevoPresupuesto= ({presupuesto, setPresupuesto, setValidPresupuesto}) =>{
                 />
             </div>
                 <input type="submit" value="Añadir"/> 
-                {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
+                {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>} 
         </form>  
     </div>  
         
