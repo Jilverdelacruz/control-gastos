@@ -1,13 +1,13 @@
 import { useState } from 'react'            // PRIMERO IMPORTA EL USESTATE
- import Mensaje from './Mensaje'                                           // LUEGO IMPORTA UN COMPONENTE
+import Mensaje from './Mensaje'                                           // LUEGO IMPORTA UN COMPONENTE
 import CerrarModal from '../img/cerrar.svg'  // FINALMENTE IMPORTA UNA IMAGEN
 
 
-const Modal = ({setModal, modalAnimado, setModalAnimado}) =>{
+const Modal = ({setModal, modalAnimado, setModalAnimado, guardarGasto}) =>{
     const [nombreGasto, setNombreGasto] = useState('')
     const [cantidadGasto, setCantidadGasto] = useState('')
     const [categoria, setCategoria] =useState('')
-    const [mensaje, setMensaje] = useState('mensaje')
+    const [mensaje, setMensaje] = useState('')
 
     const handleCerrarModal = () =>{
        
@@ -22,8 +22,16 @@ const Modal = ({setModal, modalAnimado, setModalAnimado}) =>{
         e.preventDefault()
         if([nombreGasto, cantidadGasto, categoria].includes('')){
             setMensaje('Completar todos los Campos')
+            setTimeout(()=>{
+                setMensaje('')
+            }, 2000)
             return;
         }
+        // si en caso pasa la validación lo guardamos en estado
+        guardarGasto({nombreGasto, cantidadGasto, categoria})
+        setNombreGasto('')
+        setCantidadGasto('')
+        setCategoria('')
 
     }
     return (
