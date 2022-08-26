@@ -25,6 +25,7 @@ function App() {
   // crearemos una funciona para obtener el objeto obtenido del formulario nuevo gasto
   const guardarGasto = gasto =>{
     gasto.id = generarId()
+    gasto.fecha= Date.now()
     setGastos([...gastos, gasto])
     setModalAnimado(false)
         setTimeout(() =>{   // lo hace de esta manera porque primero quita la animación porque usará el estilo que dice 
@@ -34,7 +35,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className={modal && 'fijar'}>
         <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
